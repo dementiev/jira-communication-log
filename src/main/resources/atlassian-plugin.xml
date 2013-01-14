@@ -1,0 +1,60 @@
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="Dementiev communication-log plugin">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <application-version min="4.1.2" max="4.1.2"/>
+        <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+    </plugin-info>
+
+    <web-resource key="logentry-resources" name="Dementiev log">
+        <dependency>jira.webresources:jira-global</dependency>
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <dependency>com.atlassian.auiplugin:jquery</dependency>
+        <resource type="download" name="expand-collapse.js" location="includes/js/dementiev/expand-collapse.js"/>
+        <resource type="download" name="dementiev-images/" location="includes/images"/>
+        <resource type="download" name="dementiev-custom-jira-styles.css"
+                  location="includes/css/dementiev/dementiev-custom-jira-styles.css"/>
+
+    </web-resource>
+
+    <resource type="i18n" name="i18n" location="dementiev.communicationlog.TextResource"/>
+
+    <component key="LogEntryManager" class="dementiev.jira.communicationlog.service.SampleLogEntryManager">
+        <description>Dementiev LogEntry Manager</description>
+    </component>
+
+    <web-item key="add-logEntry" i18n-name-key="webfragments.view.issue.logEntry.webItem.name"
+              name="Add Log Entry" section="operations-operations" weight="20">
+        <label key="webfragments.view.issue.logEntry.webItem.shortname"/>
+        <tooltip key="webfragments.view.issue.logEntry.webItem.name"/>
+        <styleClass>issueaction-link-issue</styleClass>
+        <link linkId="add-logEntry">
+            <!--/secure/AddLogEntry!default.jspa?id=${issueId}-->
+            /secure/AddLogEntry!default.jspa?id=${issue.id}
+        </link>
+        <!--<condition class=""/>--> <!--not defined yet-->
+    </web-item>
+
+    <issue-tabpanel key="logEntry-tabpanel" name="Log Entry Tab Panel"
+                    class="dementiev.jira.communicationlog.issuetabpanel.LogEntryTabPanel">
+        <resource type="i18n" name="i18n" location="dementiev.communicationlog.TextResource"/>
+        <description>Show Log Entries related to an issue in an issue tab panel.</description>
+        <label>Customer Communication Log</label>
+        <resource type="velocity" name="view"
+                  location="templates/plugins/communication-log/issuetabpanels/logEntry.vm"/>
+        <sortable>true</sortable>
+    </issue-tabpanel>
+
+    <webwork1 key="DementievPluginActions" name="Dementiev Plugin Actions" class="java.lang.Object">
+        <actions>
+            <action name="dementiev.jira.communicationlog.action.CommunicationLogAction"
+                    alias="AddLogEntry">
+                <view name="success">/templates/plugins/communication-log/issues/logEntry/add-logEntry.vm</view>
+                <view name="error">/templates/plugins/communication-log/issues/logEntry/add-logEntry.vm</view>
+                <view name="input">/templates/plugins/communication-log/issues/logEntry/add-logEntry.vm</view>
+                <view name="securitybreach">/secure/views/securitybreach.jsp</view>
+            </action>
+        </actions>
+    </webwork1>
+
+</atlassian-plugin>

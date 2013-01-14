@@ -1,0 +1,50 @@
+<div class="log-contentdiv">
+    <div class="log-header">
+        <span class="log-date">$logEntryWrapper.convertedDate</span>
+        #if($logEntryWrapper.canBeReplied)<span class="reply-href"><a
+##                href="${baseurl}$logEntryWrapper.logEntry.attachmentReplyHref" name="reply"
+                href="$logEntryWrapper.attachmentReplyHref" name="reply"
+                title="Reply">Reply</a></span>#end
+    </div>
+    <span class="expand-log-href" onclick="expandCollapse($logEntryWrapper.logEntry.id)"
+          id="expand-log-href$logEntryWrapper.logEntry.id">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <span class="logentry-body">
+    <div class="log-body-header">
+        <span class="log-title"><b>$logEntryWrapper.logEntry.summary</b></span>
+        <span class="notetype">$logEntryWrapper.logEntry.noteType</span>
+    </div>
+        <div class="log-infotable" id="log-infotable$logEntryWrapper.logEntry.id">
+            <table>
+                <tr>
+                    <td class="def" width="1%"><b>Submitter:</b></td>
+                    <td width="25%">#if($logEntryWrapper.logEntry.contact)<a
+                            href="mailto:$logEntryWrapper.logEntry.contact">$logEntryWrapper.logEntry.contact</a>#end
+                    </td>
+                    <td class="def" width="20%"><b>$i18n.getText("addlogEntry.addform.direction"):</b></td>
+                    <td width="25%">$logEntryWrapper.logEntry.direction</td>
+                </tr>
+                <tr>
+                    <td class="def"><b>$i18n.getText("addlogEntry.addform.type"):</b></td>
+                    <td>$logEntryWrapper.logEntry.type</td>
+                    <td class="def"><b>$i18n.getText("addlogEntry.addform.original.message"):</b></td>
+                    <td width="30%">#if($logEntryWrapper.attachmentReplyHref)<a
+                            href="$logEntryWrapper.attachmentReplyHref">$logEntryWrapper.attachmentReplyHref</a>#end
+                    </td>
+                </tr>
+            </table>
+        </div>
+    <div class="log-body-collapsed"
+         id="log-body-collapsed$logEntryWrapper.logEntry.id">$logEntryWrapper.logEntry.notes</div>
+        #if($logEntryWrapper.logEntry.attachments)
+            #if($logEntryWrapper.logEntry.attachments.size() > 0)
+                <div class="log-attachments" id="log-attachments$logEntryWrapper.logEntry.id">
+                    <span class="def"><b>$i18n.getText("addlogEntry.addform.attchmnts"):</b></span>
+                    #foreach ($attachment in ${logEntryWrapper.logEntry.attachments})
+                        $attachment.contact#if($velocityCount!= $logEntryWrapper.logEntry.attachments.size()),&nbsp;
+                    #end
+                    #end
+                </div>
+            #end
+        #end
+    </span>
+</div>

@@ -1,0 +1,73 @@
+<h2 class="aui-popup-heading">
+    $i18n.getText("addlogEntry.addform.header")
+</h2>
+#parse('templates/error/action-error.vm')
+<div class="content intform">
+    <form method="post" id="add-logentry" class="aui" action="${baseurl}/secure/AddLogEntry.jspa">
+##    <form method="post" id="add-logentry" class="aui" action="${baseurl}/secure/AddLogEntry!default.jspa?id=179748">
+    <div class="content-body" style="max-height: 370px;">
+            <table>
+                <tr>
+                    <td class="add-log-label">$i18n.getText("addlogEntry.addform.summary"):</td>
+                    <td colspan="3">
+                        <input type="text" name="summary" id="summary" #if($summary) value="$summary"#end size="55">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="add-log-label">$i18n.getText("addlogEntry.addform.direction"):</td>
+                    <td>
+                        <select id="direction" name="direction">
+                            <option value="IN">In</option>
+                            <option value="OUT">Out</option>
+                        </select>
+                    </td>
+                    <td class="add-log-label">$i18n.getText("addlogEntry.addform.type"):</td>
+                    <td>
+                        <select id="type" name="type">
+                            <option value="EMAIL">Email</option>
+                            <option value="WEB">Web</option>
+                            <option value="PHONE">Phone</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="add-log-label">$i18n.getText("addlogEntry.addform.noteType"):</td>
+                    <td>
+                        <select id="noteType" name="noteType">
+                            <option value="INTERNAL">Internal</option>
+                            <option value="EXTERNAL">External</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="add-log-label">$i18n.getText("addlogEntry.addform.notes"):</td>
+                    <td colspan="3">
+                        <textarea wrap="virtual" rows="4" id="notes"
+                                  name="notes">#if($notes)$notes#end
+                        </textarea>
+                    </td>
+                </tr>
+                #*<tr>
+                    <td><input type="button" name="add-attachment"
+                               value="$i18n.getText("addlogEntry.addform.add.attachment")"/></td>
+                </tr>*#
+            </table>
+        </div>
+        <div class="buttons-container content-footer">
+            <input type="hidden" name="id" value="${id}">
+
+            <div class="buttons"><span class="icon throbber"></span>
+                <input type="submit" value="$i18n.getText("addlogEntry.addform.add")"
+                       title="Press Alt+Shift+s to submit this form" name="Add"
+                       id="add-activity-submit" class="button" accesskey="s">
+                <a title="Press Alt+Shift+` to cancel" id="link-issue-cancel" href="${baseurl}/browse/${issue.key}"
+                   class="cancel" accesskey="`">$i18n.getText("addlogEntry.addform.cancel")</a>
+            </div>
+        </div>
+</div>
+<script type="text/javascript">
+    jQuery(function ($) {
+        //    $(document).ready(function() {//change page title. By default it is welcome page title
+        document.title = "$i18n.getText('webfragments.view.issue.logEntry.webItem.shortname')" + " ATG-JIRA";
+    });
+</script>

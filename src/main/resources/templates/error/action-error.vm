@@ -1,0 +1,9 @@
+#if ($action.hasAnyErrors())
+<table cellpadding="10" cellspacing="0" class="formErrors" width="100%">
+    #foreach ($error in ${errorMessages})
+        <tr>
+            <td width="100%" class="errMsg">$error</td>
+        </tr>
+    #end
+</table>
+#end

@@ -1,0 +1,103 @@
+.log-contentdiv {
+    padding-bottom: 20px;
+}
+
+.log-header {
+    border-bottom: 1px solid #DDDDDD;
+    padding-bottom: 5px;
+}
+
+.log-date {
+    font-size: 12px;
+    line-height: 1.286;
+}
+
+.reply-href {
+    float: right;
+}
+
+.expand-log-href {
+    display: inline;
+    background: url(dementiev-images/icon_expand.png) top left no-repeat;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.collapse-log-href {
+    display: inline;
+    background: url(dementiev-images/icon_reduce.png) top left no-repeat;
+    text-align: center;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.collapse-log-href:hover, .expand-log-href:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.log-title {
+    font-size: 16px;
+    margin-left: 10px;
+    padding-right: 100px;
+}
+
+.notetype {
+    float: right;
+    color: #666666;
+    margin-right: 10px;
+}
+
+.log-body-header {
+    display: inline;
+    margin-top: 5px;
+}
+
+.log-body-collapsed {
+    display: none;
+    margin-left: 5px;
+    padding-bottom: 40px;
+    font-size: 12px;
+    line-height: 1.286;
+}
+
+.log-attachments {
+    display: none;
+    margin-left: 40px;
+    padding-bottom: 40px;
+}
+
+.log-infotable {
+    display: none;
+    width: 80%;
+    margin-left: 5px;
+    padding-bottom: 15px;
+}
+
+.log-infotable td.def, .log-attacments .def {
+    color: #333333;
+}
+
+.log-infotable td.long-det{
+    width:30%;
+}
+
+.logentry-body {
+    background-color: #fcf7f7;
+    display: inline-block;
+    margin-left: 30px;
+    margin-top: -17px;
+    width: 96%;
+}
+
+.add-log-label {
+    text-align: right;
+    vertical-align: top;
+}
+
+.log-body-header .notetype {
+    vertical-align: text-top;
+}
+
+

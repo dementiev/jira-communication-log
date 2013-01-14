@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Project Object Model: definition of the project -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <!-- groupId and artifactId define plug-in global ID. You can change them as you like. -->
+    <groupId>dementiev.jira</groupId>
+    <artifactId>communication-log</artifactId>
+    <!--
+      version is a part of the global ID for the artifact (a certain version of this plug-in).
+      Make sure you increase version number immediately after releasing a version.
+      You can add "-SNAPSHOT" suffix to the version to mark it as a development build.
+    -->
+    <version>1.0-SNAPSHOT</version>
+
+    <!-- Substitute with your organization name, responsible for the plug-in -->
+    <organization>
+        <name>dementiev</name>
+        <url>http://about.me/dementiev</url>
+    </organization>
+
+    <!-- Plug-in details -->
+    <name>communication-log</name>
+    <description>The plugin shows and allows to add communication logs stored in a remote database.</description>
+    <packaging>atlassian-plugin</packaging>
+
+    <!--
+      Properties used in build process and testing.
+      jira.version defines the version of JIRA you're building and debuggin with.
+      jira.data.version defines the scheme version, don't change it
+    -->
+    <properties>
+        <jira.version>4.1.2</jira.version>
+        <jira.data.version>4.0</jira.data.version>
+    </properties>
+
+    <!-- Dependencies on core artifacts - don't change -->
+    <dependencies>
+        <dependency>
+            <groupId>com.atlassian.jira</groupId>
+            <artifactId>atlassian-jira</artifactId>
+            <version>${jira.version}</version>
+            <scope>provided</scope>
+        </dependency>        
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.6</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.atlassian.jira</groupId>
+            <artifactId>jira-func-tests</artifactId>
+            <version>${jira.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- Basic build definition - don't change -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.atlassian.maven.plugins</groupId>
+                <artifactId>maven-jira-plugin</artifactId>
+                <version>3.1.3</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <productVersion>${jira.version}</productVersion>
+                    <productDataVersion>${jira.data.version}</productDataVersion>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
