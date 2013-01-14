@@ -43,7 +43,7 @@ public class SampleLogEntryManager implements LogEntryManager {
             ArrayList<LogEntry.Attachment> atts = new ArrayList<LogEntry.Attachment>();
             LogEntry.Attachment att= new LogEntry.Attachment();
             att.setId(1L);
-            att.setContact("http://dl.dropbox.com/u/2171206/teamlead.ru/testmessage.msg");
+            att.setContact("http://dl.dropbox.com/u/2171206/testmessage.msg");
             atts.add(att);
             LogEntry.Attachment att1= new LogEntry.Attachment();
             att1.setId(134L);
