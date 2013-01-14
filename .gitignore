@@ -1,4 +1,18 @@
+<<<<<<< HEAD
 *.iml
 target/
 out/
 .idea/
+=======
+# Build and Release Folders
+bin/
+bin-debug/
+bin-release/
+
+# Other files and folders
+.settings/
+
+# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
+# should NOT be excluded as they contain compiler settings and other important
+# information for Eclipse / Flash Builder.
+>>>>>>> 71a6c844f937b1ad29f593f759d3b89a6d38e5d4
